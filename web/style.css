@@ -6,7 +6,7 @@ body {
     border: solid 5px white;
     width: 50%;
     margin:auto;
-    margin-top:50px;
+    margin-top:150px;
     text-align:center;
     font-family: "Host Grotesk", serif;
     background-color: lightblue;
@@ -32,7 +32,7 @@ body {
     background-color: lightcoral;
 }
 
-.button {
+.revealButton {
     text-align:center;
     margin-top: 50px;
 }
@@ -45,6 +45,16 @@ button {
     margin-left: 20px;
 }
 
-button:hover {
-    transform: scale(1.1);
+.travelButton {
+    position: relative;
+    top: -125px;
+    text-align:center;
+}
+
+#prev {
+    margin-right:20%;
+}
+
+#next {
+    margin-left:20%;
 }
