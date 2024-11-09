@@ -1,0 +1,50 @@
+body {
+    background-color: #1E1E1E;
+}
+
+.title {
+    border: solid 5px white;
+    width: 50%;
+    margin:auto;
+    margin-top:50px;
+    text-align:center;
+    font-family: "Host Grotesk", serif;
+    background-color: lightblue;
+}
+
+.front {
+    border:solid 5px green;
+    width: 30%;
+    text-align:center;
+    margin:auto;
+    margin-top: 50px;
+    font-family: "Host Grotesk", serif;
+    background-color: lightgreen;
+}
+
+.back {
+    border:solid 5px red;
+    width: 30%;
+    margin:auto;
+    text-align:center;
+    margin-top:50px;
+    font-family: "Host Grotesk", serif;
+    background-color: lightcoral;
+}
+
+.button {
+    text-align:center;
+    margin-top: 50px;
+}
+
+button {
+    font-family: "Host Grotesk", serif;
+    font-size: 20px;
+    background-color:lightgray;
+    margin-right:20px;
+    margin-left: 20px;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
