@@ -1,6 +1,6 @@
 const revealFrontButton = document.querySelector('#revealFrontButton');
-const nextButton = document.querySelector('#next');
-const prevButton = document.querySelector('#prev');
+const nextButton = document.querySelector('#nextButton');
+const prevButton = document.querySelector('#prevButton');
 const revealBackButton = document.querySelector('#revealBackButton');
 const front = document.querySelector('.front');
 const back = document.querySelector('.back');
@@ -11,7 +11,7 @@ let idx = 0;
 let revealingFront = false;
 let revealingBack = false;
 
-//TODO: Saving edits
+// TODO: Shortcut for editing
 
 function update() {
     // Front
@@ -50,6 +50,37 @@ function toggle(swapFront) {
     update();
 }
 
+function traverse(traverseNext) {
+    if(traverseNext) {
+        idx++;
+        // Though a if statement should suffice, use a while loop just in case
+        while(idx >= fronts.length) {
+            fronts.push("");
+            backs.push("");
+        }
+    }
+    else {
+        if(idx >= 1) {
+            idx--;
+        }
+        // If idx is at the first index, then insert an element at the first index since idx cannot be negative
+        else {
+            fronts.unshift("");
+            backs.unshift("");
+        }
+    }
+    update();
+    console.log(fronts.length);
+}
+
+front.addEventListener('input', function() {
+    fronts[idx] = front.textContent;
+})
+
+back.addEventListener('input', function() {
+    backs[idx] = back.textContent;
+})
+
 document.addEventListener("keydown", function(event) {
     // Prevent accidental shortcut usages when actually typing
     if (document.activeElement.tagName == 'INPUT' ||
@@ -58,11 +89,20 @@ document.addEventListener("keydown", function(event) {
         return;
     }
 
+    // Reveal toggling
     if(event.key == 'l') {
         toggle(false);
     }
     if(event.key == 'k') {
         toggle(true);
+    }
+
+    // Traversing
+    if(event.key == 'a') {
+        traverse(false);
+    }
+    if(event.key == 'd') {
+        traverse(true);
     }
 })
 
@@ -75,9 +115,9 @@ revealBackButton.addEventListener('click', function() {
 })
 
 nextButton.addEventListener('click', function() {
-
+    traverse(true);
 })
 
 prevButton.addEventListener('click', function() {
-
+    traverse(false);
 })
