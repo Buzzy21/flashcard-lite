@@ -3,6 +3,7 @@ body {
 }
 
 .title {
+    border-radius:10px;
     border: solid 5px white;
     width: 50%;
     margin:auto;
@@ -13,9 +14,13 @@ body {
 }
 
 .front {
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    min-height:60px;
+    border-radius:20px;
     border:solid 5px green;
     width: 30%;
-    text-align:center;
     margin:auto;
     margin-top: 50px;
     font-family: "Host Grotesk", serif;
@@ -23,11 +28,15 @@ body {
 }
 
 .back {
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    min-height:60px;
+    border-radius:20px;
     border:solid 5px red;
     width: 30%;
     margin:auto;
-    text-align:center;
-    margin-top:50px;
+    margin-top: 50px;
     font-family: "Host Grotesk", serif;
     background-color: lightcoral;
 }
@@ -38,9 +47,11 @@ body {
 }
 
 button {
+    border-radius:5px;
     font-family: "Host Grotesk", serif;
     font-size: 20px;
-    background-color:lightgray;
+    border: solid 3px lightgreen;
+    background-color: lightgreen;
     margin-right:20px;
     margin-left: 20px;
 }
@@ -51,10 +62,18 @@ button {
     text-align:center;
 }
 
-#prev {
+#prevButton {
     margin-right:20%;
 }
 
-#next {
+#nextButton {
     margin-left:20%;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button:active {
+    transform:scale(1.0);
 }

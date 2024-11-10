@@ -6,25 +6,27 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet">
 </head>
 
 <body>
-    <h1 class="title"> Flashcard Lite </h1>
-    <div class="front">
-        <h3>Front</h3>
-    </div>
-    <div class="back">
-        <h3>Back</h3>
-    </div>
-    <div class="revealButton">
-        <button>Reveal Front (K)</button>
-         <button>Reveal Back (L)</button>
-    </div>
+<h1 class="title"> Flashcard Lite </h1>
+<div class="front" contenteditable="true">
+    <p>Hidden</p>
+</div>
+<div class="back" contenteditable="true">
+    <p>Hidden</p>
+</div>
+<div class="revealButton">
+    <button id="revealFrontButton">Reveal Front (K)</button>
+    <button id="revealBackButton">Reveal Back (L)</button>
+</div>
 
-    <div class="travelButton">
-        <button id="prev">Prev (A)</button>
-        <button id="next">Next (D)</button>
-    </div>
+<div class="travelButton">
+    <button id="prevButton">Prev (A)</button>
+    <button id="nextButton">Next (D)</button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
