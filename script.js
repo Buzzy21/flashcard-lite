@@ -4,6 +4,7 @@ const prevButton = document.querySelector('#prevButton');
 const revealBackButton = document.querySelector('#revealBackButton');
 const front = document.querySelector('.front');
 const back = document.querySelector('.back');
+const cardTracker = document.querySelector('#cardTracker');
 
 let fronts = ["Example Front"];
 let backs = ["Example Back"]
@@ -37,6 +38,7 @@ function update() {
         back.innerHTML = "<h3>Hidden</h3>";
         back.contentEditable = false;
     }
+    cardTracker.textContent = `${idx+1}/${fronts.length}`;
 }
 
 function toggle(swapFront) {
