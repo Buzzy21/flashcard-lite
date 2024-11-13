@@ -11,11 +11,9 @@ let backs = ["Example Back"]
 let idx = 0;
 let revealingFront = false;
 let revealingBack = false;
-let isForcing = false;
 
 // TODO: Allow saving
 // TODO: Frontend that informs the user the shortcuts
-// TODO: Modify isForcing (make it work)
 // TODO: Make the size of the cards dynamic
 
 function update() {
@@ -88,10 +86,17 @@ back.addEventListener('input', function() {
 })
 
 document.addEventListener("keydown", function(event) {
+    // Exit editing mode
+    if(event.key == 'Escape') {
+        front.blur();
+        back.blur();
+        console.log('blurred');
+    }
+
     // Prevent accidental shortcut usages when actually typing
     if (document.activeElement.tagName == 'INPUT' ||
         document.activeElement.tagName == 'TEXTAREA' ||
-        document.activeElement.isContentEditable && !isForcing) {
+        document.activeElement.isContentEditable) {
         return;
     }
 
