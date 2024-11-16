@@ -4,13 +4,13 @@ body {
 
 .title {
     border-radius:10px;
-    border: solid 5px white;
-    width: 50%;
+    border: solid 3px white;
+    width: 40%;
     margin:auto;
     margin-top:150px;
     text-align:center;
     font-family: "Host Grotesk", serif;
-    background-color: lightblue;
+    background-color: #8cd2ff;
 }
 
 .front {
@@ -25,6 +25,7 @@ body {
     margin-top: 50px;
     font-family: "Host Grotesk", serif;
     background-color: lightgreen;
+    overflow:auto;
 }
 
 .back {
@@ -39,11 +40,20 @@ body {
     margin-top: 50px;
     font-family: "Host Grotesk", serif;
     background-color: lightcoral;
+    overflow:auto;
 }
 
 .revealButton {
     text-align:center;
     margin-top: 50px;
+}
+
+.hotkeys {
+    position:absolute;
+    color:white;
+    font-family: "Host Grotesk", serif;
+    margin-top:13%;
+    margin-left:2%;
 }
 
 button {
@@ -83,4 +93,12 @@ button:hover {
 
 button:active {
     transform:scale(1.0);
+}
+
+.autoRevealCheckboxes {
+    position:absolute;
+    color:white;
+    font-family: "Host Grotesk", serif;
+    margin-left:75%;
+    margin-top:29%;
 }

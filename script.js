@@ -5,16 +5,16 @@ const revealBackButton = document.querySelector('#revealBackButton');
 const front = document.querySelector('.front');
 const back = document.querySelector('.back');
 const cardTracker = document.querySelector('#cardTracker');
+const autoFront = document.querySelector('#autoFront');
+const autoBack = document.querySelector('#autoBack');
 
 let fronts = ["Example Front"];
 let backs = ["Example Back"]
 let idx = 0;
 let revealingFront = false;
 let revealingBack = false;
-
-// TODO: Allow saving
-// TODO: Frontend that informs the user the shortcuts
-// TODO: Make the size of the cards dynamic
+let autoRevealFront = false;
+let autoRevealBack = false;
 
 function update() {
     // Front
@@ -73,16 +73,22 @@ function traverse(traverseNext) {
             backs.unshift("");
         }
     }
+
+    // Auto reveal front/back
+    revealingFront = autoRevealFront;
+    revealingBack = autoRevealBack;
+
     update();
-    console.log(fronts.length);
 }
 
 front.addEventListener('input', function() {
     fronts[idx] = front.textContent;
+    saveContent();
 })
 
 back.addEventListener('input', function() {
     backs[idx] = back.textContent;
+    saveContent();
 })
 
 document.addEventListener("keydown", function(event) {
@@ -90,7 +96,6 @@ document.addEventListener("keydown", function(event) {
     if(event.key == 'Escape') {
         front.blur();
         back.blur();
-        console.log('blurred');
     }
 
     // Prevent accidental shortcut usages when actually typing
@@ -102,25 +107,31 @@ document.addEventListener("keydown", function(event) {
 
     // Reveal toggling
     if(event.key == 'l') {
+        event.preventDefault();
         toggle(false);
     }
     if(event.key == 'k') {
+        event.preventDefault();
         toggle(true);
     }
 
     // Traversing
     if(event.key == 'a' || event.key == 'ArrowLeft') {
+        event.preventDefault();
         traverse(false);
     }
     if(event.key == 'd' || event.key == 'ArrowRight') {
+        event.preventDefault();
         traverse(true);
     }
 
     // Quick editing
     if(event.key == 'i') {
+        event.preventDefault();
         front.focus();
     }
     if(event.key == 'o') {
+        event.preventDefault();
         back.focus();
     }
 })
@@ -140,3 +151,51 @@ nextButton.addEventListener('click', function() {
 prevButton.addEventListener('click', function() {
     traverse(false);
 })
+
+// Updating auto reveal front and back
+autoFront.addEventListener('change', function() {
+    autoRevealFront = autoFront.checked;
+    saveContent();
+});
+
+autoBack.addEventListener('change', function() {
+    autoRevealBack = autoBack.checked;
+    saveContent();
+});
+
+function saveContent() {
+    // Stores content
+    localStorage.setItem('fronts',JSON.stringify(fronts));
+    localStorage.setItem('backs',JSON.stringify(backs));
+    localStorage.setItem('idx',idx);
+    localStorage.setItem('autoRevealFront',autoRevealFront);
+    localStorage.setItem('autoRevealBack',autoRevealBack);
+}
+
+function loadContent() {
+    // Loads stored content
+    if(localStorage.getItem('fronts')){
+        fronts = JSON.parse(localStorage.getItem('fronts'));
+    }
+    if(localStorage.getItem('backs')){
+        backs = JSON.parse(localStorage.getItem('backs'));
+    }
+    if(localStorage.getItem('idx')){
+        idx = parseInt(localStorage.getItem('idx'));
+    }
+    if(localStorage.getItem('autoRevealFront')){
+        autoRevealFront = JSON.parse(localStorage.getItem('autoRevealFront'));
+        autoFront.checked = autoRevealFront;
+    }
+    if(localStorage.getItem('autoRevealBack')) {
+        autoRevealBack = JSON.parse(localStorage.getItem('autoRevealBack'));
+        autoBack.checked = autoRevealBack
+    }
+
+    revealingFront = autoRevealFront;
+    revealingBack = autoRevealBack;
+
+    update();
+}
+
+window.addEventListener('load', loadContent)
